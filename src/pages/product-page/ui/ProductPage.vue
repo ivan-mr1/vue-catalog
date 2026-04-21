@@ -2,6 +2,6 @@
 </script>
 
 <template>
-  <div class="page">home
+  <div class="page">card
   </div>
 </template>
