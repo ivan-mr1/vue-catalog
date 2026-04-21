@@ -4,9 +4,21 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import vueDevTools from 'vite-plugin-vue-devtools';
 import { imageOptimizerPlugin } from './vite-plugins/image-optimizer';
+import Components from 'unplugin-vue-components/vite';
+import { PrimeVueResolver } from '@primevue/auto-import-resolver';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  plugins: [vue(), vueJsx(), vueDevTools(), imageOptimizerPlugin()],
+  plugins: [
+    tailwindcss(),
+    vue(),
+    vueJsx(),
+    vueDevTools(),
+    imageOptimizerPlugin(),
+    Components({
+      resolvers: [PrimeVueResolver()],
+    }),
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -18,7 +30,6 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "@helpers" as *;`,
         api: 'modern-compiler',
       },
     },

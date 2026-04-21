@@ -1,13 +1,13 @@
 <script setup>
 import { RouterView } from 'vue-router';
-import Header from '@/widgets/header';
-import './styles/main.scss';
-import ScrollUpButton from '@/shared/ui/ScrollUpButton';
+import './styles/style-tailwind.css';
 </script>
 
 <template>
+  <h1 class="font-bold">hello </h1>
+123
+<vue-feather type="feather"></vue-feather>
   <div class="wrapper">
-    <Header />
     <div class="container">
       <main class="page">
         <RouterView v-slot="{ Component }">
@@ -17,6 +17,5 @@ import ScrollUpButton from '@/shared/ui/ScrollUpButton';
         </RouterView>
       </main>
     </div>
-    <ScrollUpButton />
   </div>
 </template>

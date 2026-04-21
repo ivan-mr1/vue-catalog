@@ -33,15 +33,21 @@
   },
   "dependencies": {
     "@primeuix/themes": "2.0.3",
+    "@tailwindcss/vite": "4.2.3",
     "axios": "1.15.1",
+    "feather-icons": "4.29.2",
     "pinia": "3.0.4",
+    "prettier-plugin-tailwindcss": "0.7.2",
     "primevue": "4.5.5",
-    "vue": "3.5.29",
+    "tailwindcss": "4.2.3",
+    "vue": "^3.5.32",
+    "vue-feather": "2.0.0",
     "vue-i18n": "11.3.2",
     "vue-router": "5.0.3"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "@primevue/auto-import-resolver": "4.5.5",
     "@vitejs/plugin-vue": "6.0.4",
     "@vitejs/plugin-vue-jsx": "5.1.4",
     "@vue/eslint-config-prettier": "10.2.0",
@@ -62,6 +68,7 @@
     "stylelint-scss": "6.14.0",
     "stylelint-selector-bem-pattern": "4.0.1",
     "svgo": "4.0.1",
+    "unplugin-vue-components": "32.0.0",
     "vite": "7.3.2",
     "vite-plugin-image-optimizer": "2.0.3",
     "vite-plugin-vue-devtools": "8.0.6"
