@@ -1,12 +1,10 @@
 <script setup>
 import { RouterView } from 'vue-router';
 import './styles/style-tailwind.css';
+import ScrollUpButton from '@/shared/ui/ScrollUpButton';
 </script>
 
 <template>
-  <h1 class="font-bold">hello </h1>
-123
-<vue-feather type="feather"></vue-feather>
   <div class="wrapper">
     <div class="container">
       <main class="page">
@@ -16,6 +14,7 @@ import './styles/style-tailwind.css';
           </transition>
         </RouterView>
       </main>
+      <ScrollUpButton />
     </div>
   </div>
 </template>

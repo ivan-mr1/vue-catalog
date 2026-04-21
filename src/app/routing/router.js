@@ -1,15 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router';
-const HomePage = () => import('@/pages/home-page');
-const ProductPage = () => import('@/pages/product-page');
-const FavoritesPage = () => import('@/pages/favorites-page');
-const CartPage = () => import('@/pages/cart-page');
+import home from './routes/home';
+import product from './routes/product';
+import favorites from './routes/favorites';
+import cart from './routes/cart';
 const NotFoundPage = () => import('@/pages/not-found-page');
 
 const routes = [
-  { path: '/', name: 'Home', component: HomePage },
-  { path: '/product/:id', name: 'product', component: ProductPage },
-  { path: '/favorites', name: 'Favorites', component: FavoritesPage },
-  { path: '/cart', name: 'Cart', component: CartPage },
+  ...home,
+  ...product,
+  ...favorites,
+  ...cart,
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFoundPage },
 ];
 

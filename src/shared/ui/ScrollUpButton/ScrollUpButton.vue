@@ -59,8 +59,6 @@ onUnmounted(() => {
 </template>
 
 <style scoped lang="scss">
-@use '@helpers' as *;
-
 .scroll-up {
   --color-scroll-up-bcg: #ffffff;
   --color-scroll-up-path: var(--scroll-up, #9333ea);
