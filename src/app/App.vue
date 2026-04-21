@@ -1,6 +1,6 @@
 <script setup>
 import { RouterView } from 'vue-router';
-import './styles/style-tailwind.css';
+import './styles/main.scss';
 import ScrollUpButton from '@/shared/ui/ScrollUpButton';
 </script>
 

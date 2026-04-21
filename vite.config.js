@@ -30,6 +30,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
+        additionalData: `@use "@helpers" as *;`,
         api: 'modern-compiler',
       },
     },
