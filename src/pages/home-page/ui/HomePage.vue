@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="page">
+  <div>
     home
     <div class="flex items-center gap-3">
       <RouterLink to="/favorites">favorites</RouterLink>

@@ -1,0 +1,31 @@
+{
+  "description": "Best products with nationwide delivery. Creating a comfortable shopping experience since 2026.",
+  "language": "Language",
+  "rights": "All rights reserved.",
+  "newsletter": {
+    "label": "Subscribe to our newsletter",
+    "placeholder": "Your Email",
+    "button": "Ok"
+  },
+  "catalog": {
+    "title": "Catalog",
+    "new": "New Arrivals",
+    "popular": "Popular",
+    "sale": "Sale",
+    "accessories": "Accessories"
+  },
+  "support": {
+    "title": "Support",
+    "delivery": "Shipping",
+    "returns": "Returns",
+    "faq": "FAQ",
+    "contacts": "Contacts"
+  },
+  "company": {
+    "title": "Company",
+    "about": "About Us",
+    "careers": "Careers",
+    "blog": "Blog",
+    "offer": "Public Offer"
+  }
+}

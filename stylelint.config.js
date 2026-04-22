@@ -14,6 +14,8 @@ export default {
     '**/.idea/**',
     '**/.vscode/**',
     '**/.DS_Store',
+    'src/app/styles/style-tailwind.css',
+    '**/style-tailwind.css',
   ],
   defaultSeverity: 'warning',
   extends: ['stylelint-config-standard-scss'],
