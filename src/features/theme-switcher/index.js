@@ -1,1 +1,1 @@
-export { default as ThemeToggle } from './ui/ThemeToggle.vue';
+export { default } from './ui/ThemeToggle.vue';

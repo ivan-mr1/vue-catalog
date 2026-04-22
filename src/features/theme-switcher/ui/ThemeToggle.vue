@@ -35,7 +35,7 @@ const toggle = () => {
     class="theme-toggle"
     :class="{ 'is-light': !isDark }"
     :aria-label="isDark ? 'Switch to light theme' : 'Switch to dark theme'"
-    :title="isDark ? 'Светлая тема' : 'Тёмная тема'"
+    :title="isDark ? 'light theme' : 'dark theme'"
     @click="toggle"
   >
     <span class="theme-toggle__icon theme-toggle__icon--sun">
