@@ -1,1 +1,1 @@
-export { default as LangSelect } from './ui/LangSelect.vue';
+export { default } from './ui/LangSwitcher.vue';
