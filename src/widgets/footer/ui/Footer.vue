@@ -1,12 +1,11 @@
 <script setup>
 import { computed } from 'vue';
-import { i18n, useSliceI18n } from '@/shared/i18n';
-import { browserStorage } from '@/shared/lib';
-import Select from 'primevue/select';
+import { useSliceI18n } from '@/shared/i18n';
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import Divider from 'primevue/divider';
 import VueFeather from 'vue-feather';
+import LangSwitcher from '@/features/lang-switcher-2';
 
 import ru from '../locales/ru.json';
 import ua from '../locales/ua.json';
@@ -15,22 +14,6 @@ import en from '../locales/en.json';
 const { t } = useSliceI18n('footer', { ru, ua, en });
 
 const currentYear = new Date().getFullYear();
-
-const languages = [
-  { name: 'Русский', code: 'ru' },
-  { name: 'Українська', code: 'ua' },
-  { name: 'English', code: 'en' },
-];
-
-const selectedLanguage = computed({
-  get: () => {
-    return languages.find((lang) => lang.code === i18n.global.locale.value) || languages[0];
-  },
-  set: (val) => {
-    i18n.global.locale.value = val.code;
-    browserStorage.set('lang', val.code);
-  },
-});
 
 const menuSections = computed(() => [
   {
@@ -73,7 +56,6 @@ const socialIcons = ['facebook', 'instagram', 'twitter', 'github'];
         <p class="text-surface-500 max-w-sm text-sm leading-relaxed">
           {{ t('description') }}
         </p>
-
         <div class="space-y-3">
           <label class="text-surface-400 text-xs font-bold tracking-widest uppercase">
             {{ t('newsletter.label') }}
@@ -113,21 +95,7 @@ const socialIcons = ['facebook', 'instagram', 'twitter', 'github'];
       </div>
 
       <div class="order-1 flex items-center gap-6 sm:order-2">
-        <div class="text-surface-500 flex items-center gap-2">
-          <vue-feather type="globe" size="14" />
-          <Select
-            v-model="selectedLanguage"
-            :options="languages"
-            option-label="name"
-            class="h-auto !border-none !bg-transparent !p-0 !shadow-none"
-            pt:label:class="!p-0 !text-[11px] !font-bold !uppercase"
-            pt:dropdown:class="!hidden"
-          >
-            <template #value="{ value }">
-              <span class="hover:text-primary cursor-pointer">{{ value?.code }}</span>
-            </template>
-          </Select>
-        </div>
+        <LangSwitcher />
 
         <div class="flex gap-4">
           <a
@@ -143,9 +111,3 @@ const socialIcons = ['facebook', 'instagram', 'twitter', 'github'];
     </div>
   </footer>
 </template>
-
-<style scoped>
-:deep(.p-select-label) {
-  padding: 0 !important;
-}
-</style>
