@@ -17,7 +17,7 @@ const searchQuery = ref('');
 const actionBtnClass = `
   flex h-14 w-14 items-center justify-center p-0
   border-none bg-transparent rounded-full cursor-pointer
-  text-slate-800 dark:text-surface-100
+  text-current opacity-80 hover:opacity-100
   hover:bg-surface-100 dark:hover:bg-surface-800 hover:text-primary
   transition-all duration-200
   focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary
@@ -25,7 +25,7 @@ const actionBtnClass = `
 </script>
 
 <template>
-  <header class="dark:bg-surface-900 flex flex-col bg-white">
+  <header class="flex flex-col">
     <div class="border-surface-100 dark:border-surface-800 border-b py-2">
       <div class="flex items-center justify-between gap-6">
         <div class="flex items-center gap-6">
@@ -39,7 +39,7 @@ const actionBtnClass = `
             v-for="link in navLinks"
             :key="link"
             href="#"
-            class="text-surface-500 hover:text-primary text-base no-underline transition-colors"
+            class="text-surface-500 hover:text-primary no-underline transition-colors"
           >
             {{ link }}
           </a>
@@ -53,7 +53,7 @@ const actionBtnClass = `
       <div class="flex items-center gap-10">
         <a
           href="tel:380664501010"
-          class="hover:text-primary dark:text-surface-100 text-2xl font-bold text-slate-800 no-underline transition-colors"
+          class="hover:text-primary text-2xl font-bold text-current no-underline transition-colors"
         >
           38 066 450 10 10
         </a>
