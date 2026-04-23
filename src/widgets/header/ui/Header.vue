@@ -7,7 +7,7 @@ import ThemeToggle from '@/features/theme-switcher';
 import Logo from '@/shared/ui/logo';
 import Menu from '@/widgets/header/menu';
 import Actions from '@/widgets/header/actions';
-import SearchInput from '@/features/search-input/ui/SearchInput.vue';
+import SearchInput from '@/features/search-input';
 </script>
 
 <template>
@@ -27,12 +27,7 @@ import SearchInput from '@/features/search-input/ui/SearchInput.vue';
       <Logo />
 
       <div class="flex items-center gap-10">
-        <a
-          href="tel:380664501010"
-          class="hover:text-primary text-2xl font-bold text-current no-underline"
-        >
-          38 066 450 10 10
-        </a>
+        <a href="tel:380664501010" class="text-2xl font-bold text-current"> 38 066 450 10 10 </a>
         <Button
           label="Заказать звонок"
           severity="secondary"
