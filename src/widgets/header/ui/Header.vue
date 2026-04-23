@@ -23,7 +23,7 @@ import SearchInput from '@/features/search-input';
       </div>
     </div>
 
-    <div class="flex items-center justify-between py-8">
+    <div class="flex items-center justify-between py-4">
       <Logo />
 
       <div class="flex items-center gap-10">
@@ -32,17 +32,17 @@ import SearchInput from '@/features/search-input';
           label="Заказать звонок"
           severity="secondary"
           variant="outlined"
-          class="!font-bold !text-current"
+          class="font-bold! text-current!"
         />
       </div>
     </div>
 
-    <div class="flex items-center gap-6 pb-8">
+    <div class="flex items-center gap-6 pb-2">
       <Button
         label="Каталог"
         severity="secondary"
         variant="outlined"
-        class="!font-bold !text-current"
+        class="font-bold! text-current!"
       >
         <template #icon>
           <vue-feather type="menu" size="20" class="mr-2" />
