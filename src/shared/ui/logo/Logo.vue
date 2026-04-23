@@ -12,10 +12,9 @@
         <path d="M 47 30 L 53 30" stroke="currentColor" stroke-width="6" stroke-linecap="round" />
         <circle cx="75" cy="30" r="6" fill="currentColor" class="animate-pulse" />
       </svg>
+
       <div class="flex flex-col leading-tight">
-        <span class="text-3xl font-black tracking-tighter text-slate-900 uppercase dark:text-white">
-          Opti<span class="text-primary">Vue</span>
-        </span>
+        <span class="text-3xl font-black tracking-tighter uppercase">OptiVue</span>
       </div>
     </div>
   </RouterLink>

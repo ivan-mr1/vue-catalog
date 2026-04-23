@@ -24,55 +24,31 @@ watch(
 </script>
 
 <template>
-  <div class="text-surface-700 dark:text-surface-300 flex items-center gap-2">
-    <vue-feather type="globe" size="18" aria-hidden="true" class="shrink-0" />
+  <div class="flex items-center gap-2">
+    <vue-feather type="globe" size="18" aria-hidden="true" />
 
     <Select
       v-model="locale"
       :options="langOptions"
       option-label="label"
       option-value="value"
-      aria-label="Выберите язык интерфейса"
-      class="flex h-auto min-h-[44px] items-center !border-none !bg-transparent !p-0 !shadow-none"
+      aria-label="Язык"
+      class="!border-none !bg-transparent !shadow-none"
       :pt="{
-        label: { class: '!p-0 !text-base !font-bold !uppercase tracking-wide' },
-        dropdown: { class: '!hidden' },
+        label: { class: 'font-bold tracking-wide uppercase' },
       }"
     >
       <template #value="{ value }">
-        <span
-          class="hover:text-primary focus-visible:outline-primary rounded-sm uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
-        >
+        <span class="hover:text-primary text-current transition-colors">
           {{ value }}
         </span>
       </template>
 
       <template #option="{ option }">
-        <span :lang="option.value" class="text-base font-medium">
+        <span :lang="option.value">
           {{ option.label }}
         </span>
       </template>
     </Select>
   </div>
 </template>
-
-<style scoped>
-:deep(.p-select-label) {
-  padding: 0 !important;
-  line-height: 1;
-}
-
-:deep(.p-select-option) {
-  padding: 12px 16px !important;
-  font-size: 16px !important;
-}
-
-:deep(.p-select:focus-visible) {
-  outline: 2px solid var(--p-primary-500) !important;
-  outline-offset: 4px;
-}
-
-.text-surface-700 {
-  color: #374151;
-}
-</style>
