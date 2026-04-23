@@ -49,7 +49,7 @@ const socialIcons = ['facebook', 'instagram', 'twitter', 'github'];
 </script>
 
 <template>
-  <footer class="border-surface-200 dark:border-surface-700 border-t py-12" role="contentinfo">
+  <footer class="border-surface-200 dark:border-surface-700 border-t py-12">
     <div class="grid grid-cols-1 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">
       <div class="space-y-6 lg:col-span-2">
         <div class="text-primary text-2xl font-black tracking-tight uppercase">Vue-Catalog</div>

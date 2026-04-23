@@ -2,7 +2,6 @@
 
 @theme {
   --spacing-container-max: calc(1200px + (16px * 2));
-
   --breakpoint-desktop: 1232px;
 }
 
@@ -12,12 +11,37 @@
   #app {
     @apply h-full;
   }
+
+  body {
+    @apply text-base antialiased transition-colors duration-300;
+    background-color: var(--p-surface-0);
+    color: var(--p-surface-900);
+  }
+
+  .dark body {
+    background-color: var(--p-surface-950);
+    color: var(--p-surface-0);
+  }
+}
+
+@layer components {
+  .p-component {
+    font-size: inherit !important;
+    font-family: inherit !important;
+  }
+
+  .p-button,
+  .p-inputtext,
+  .p-select {
+    @apply shadow-none;
+  }
 }
 
 .fade-enter-active,
 .fade-leave-active {
   @apply transition-opacity duration-200;
 }
+
 .fade-enter-from,
 .fade-leave-to {
   @apply opacity-0;
