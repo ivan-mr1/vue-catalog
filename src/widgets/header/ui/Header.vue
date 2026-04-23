@@ -27,7 +27,7 @@ import SearchInput from '@/features/search-input';
       <Logo />
 
       <div class="flex items-center gap-10">
-        <a href="tel:380664501010" class="text-2xl font-bold text-current"> 38 066 450 10 10 </a>
+        <a href="tel:380664501010" class="text-2xl font-bold text-current">38 066 450 10 10</a>
         <Button
           label="Заказать звонок"
           severity="secondary"
