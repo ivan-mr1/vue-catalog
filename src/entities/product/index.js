@@ -1,2 +1,2 @@
 export * from './model/store';
-export { default } from './ui/Product.vue';
+export { default } from './ui/ProductCard.vue';
