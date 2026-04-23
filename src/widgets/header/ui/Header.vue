@@ -5,23 +5,30 @@ import InputText from 'primevue/inputtext';
 import IconField from 'primevue/iconfield';
 import InputIcon from 'primevue/inputicon';
 import VueFeather from 'vue-feather';
+
 import SitySwitcher from '@/features/sity-switcher';
-import { Logo } from '@/shared/ui/icons';
 import LangSwitcher from '@/features/lang-switcher';
 import ThemeToggle from '@/features/theme-switcher';
+import Logo from '@/shared/ui/logo';
 
 const navLinks = ['Салони', 'Акции', 'Статус заказа', 'Оплата', 'Контакты'];
 const searchQuery = ref('');
 
-const actionBtnClass =
-  'flex h-14 w-14 items-center justify-center p-0 border-none bg-transparent text-slate-800 dark:text-surface-100 hover:bg-surface-100 dark:hover:bg-surface-800 hover:text-primary transition-all duration-200 cursor-pointer rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary';
+const actionBtnClass = `
+  flex h-14 w-14 items-center justify-center p-0
+  border-none bg-transparent rounded-full cursor-pointer
+  text-slate-800 dark:text-surface-100
+  hover:bg-surface-100 dark:hover:bg-surface-800 hover:text-primary
+  transition-all duration-200
+  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary
+`;
 </script>
 
 <template>
   <header class="dark:bg-surface-900 flex flex-col bg-white">
     <div class="border-surface-100 dark:border-surface-800 border-b py-2">
       <div class="flex items-center justify-between gap-6">
-        <div class="flex items-center justify-between gap-6">
+        <div class="flex items-center gap-6">
           <SitySwitcher />
           <LangSwitcher />
           <ThemeToggle />
@@ -41,20 +48,7 @@ const actionBtnClass =
     </div>
 
     <div class="flex items-center justify-between py-8">
-      <RouterLink to="/" class="group no-underline">
-        <div class="flex items-center gap-4">
-          <Logo />
-
-          <div class="flex flex-col leading-tight">
-            <span
-              class="text-4xl font-black tracking-tighter text-slate-900 uppercase dark:text-white"
-            >
-              Opti<span class="text-primary">Vue</span>
-            </span>
-            <span class="text-surface-500 text-base font-medium uppercase"> Магазин зрения </span>
-          </div>
-        </div>
-      </RouterLink>
+      <Logo />
 
       <div class="flex items-center gap-10">
         <a
@@ -67,7 +61,7 @@ const actionBtnClass =
           label="Заказать звонок"
           variant="outlined"
           severity="secondary"
-          class="!border-surface-300 dark:!border-surface-700 !px-8 !py-3 !text-base !font-bold"
+          class="!border-surface-300 dark:!border-surface-700 !px-8 !py-3 !font-bold"
         />
       </div>
     </div>
@@ -76,7 +70,7 @@ const actionBtnClass =
       <Button
         icon="pi pi-list"
         label="Каталог"
-        class="!border-none !bg-[#3b5275] !px-10 !py-4 !text-base !font-bold text-white transition-colors hover:!bg-[#2d3f5a]"
+        class="!border-none !bg-[#3b5275] !px-10 !py-4 !font-bold text-white transition-colors hover:!bg-[#2d3f5a]"
       />
 
       <div class="flex-1">
@@ -85,7 +79,7 @@ const actionBtnClass =
           <InputText
             v-model="searchQuery"
             placeholder="Поиск товаров или брендов"
-            class="!border-surface-300 dark:!border-surface-700 dark:!bg-surface-800 w-full !py-4 !text-base shadow-sm"
+            class="!border-surface-300 dark:!border-surface-700 dark:!bg-surface-800 w-full !py-4 shadow-sm"
           />
         </IconField>
       </div>

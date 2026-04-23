@@ -1,42 +1,22 @@
-<script setup>
-defineProps({
-  imageUrl: { type: String, default: '' },
-  alt: { type: String, default: 'Logo' },
-  width: { type: Number, default: 50 },
-  height: { type: Number, default: 50 },
-  text: { type: String, default: '' },
-  lazy: { type: Boolean, default: false },
-  ariaLabel: { type: String, default: 'Home' },
-});
-</script>
-
 <template>
-  <div class="logo" :aria-label="ariaLabel" :title="ariaLabel">
-    <img
-      v-if="imageUrl"
-      :src="imageUrl"
-      :alt="alt"
-      :width="width"
-      :height="height"
-      :loading="lazy ? 'lazy' : 'eager'"
-    />
-    <div v-if="text">{{ text }}</div>
-  </div>
+  <RouterLink to="/" class="group inline-block no-underline">
+    <div class="flex items-center gap-4">
+      <svg
+        viewBox="0 0 100 60"
+        xmlns="http://www.w3.org/2000/svg"
+        class="text-primary h-auto w-14 transition-transform duration-300 group-hover:scale-105"
+        aria-hidden="true"
+      >
+        <circle cx="25" cy="30" r="22" stroke="currentColor" stroke-width="6" fill="none" />
+        <circle cx="75" cy="30" r="22" stroke="currentColor" stroke-width="6" fill="none" />
+        <path d="M 47 30 L 53 30" stroke="currentColor" stroke-width="6" stroke-linecap="round" />
+        <circle cx="75" cy="30" r="6" fill="currentColor" class="animate-pulse" />
+      </svg>
+      <div class="flex flex-col leading-tight">
+        <span class="text-3xl font-black tracking-tighter text-slate-900 uppercase dark:text-white">
+          Opti<span class="text-primary">Vue</span>
+        </span>
+      </div>
+    </div>
+  </RouterLink>
 </template>
-
-<style scoped lang="scss">
-@use '@helpers' as *;
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  color: var(--color-orange);
-  font-size: 18px;
-  font-weight: 500;
-
-  @include hover {
-    opacity: 0.8;
-  }
-}
-</style>
