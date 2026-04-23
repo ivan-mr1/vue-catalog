@@ -5,7 +5,11 @@ import { browserStorage } from '@/shared/lib';
 const isDark = ref(true);
 
 const applyTheme = (dark) => {
-  document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+  if (dark) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
 };
 
 onMounted(() => {
@@ -79,8 +83,6 @@ const toggle = () => {
 </template>
 
 <style scoped lang="scss">
-@use '@helpers' as *;
-
 .theme-toggle {
   --size: 36px;
 
