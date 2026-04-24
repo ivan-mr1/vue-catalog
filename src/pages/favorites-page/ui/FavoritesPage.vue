@@ -13,50 +13,58 @@ const favorites = ref([
     image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=400',
   },
   {
+    id: 2,
+    name: 'Oakley Holbrook Polarized',
+    code: '01-2',
+    price: 3200,
+    image: 'https://images.unsplash.com/photo-1577803645773-f96470509666?q=80&w=400',
+  },
+  {
     id: 3,
     name: 'Gucci Fashion Glasses',
     code: '03-5',
     price: 8900,
-    image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=400',
-  },
-  {
-    id: 4,
-    name: 'Prada VPR Medical',
-    code: '04-1',
-    price: 5600,
-    image: 'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?q=80&w=400',
+    image: 'https://images.unsplash.com/photo-1511499767390-90342f16b147?q=80&w=400',
   },
 ]);
 
-const home = ref({ icon: 'home', url: '/' });
+const home = ref({ url: '/' });
 const breadcrumbs = ref([{ label: 'Избранное' }]);
 
-const removeFromFavorites = (productId) => {
-  favorites.value = favorites.value.filter((item) => item.id !== productId);
+const removeFromFavorites = (id) => {
+  favorites.value = favorites.value.filter((item) => item.id !== id);
+};
+
+const clearAll = () => {
+  favorites.value = [];
 };
 </script>
 
 <template>
-  <main class="max-w-spacing-container-max mx-auto flex-1 px-4 py-6">
+  <main class="mx-auto w-full flex-1 px-4 py-6" style="max-width: var(--spacing-container-max)">
     <nav class="mb-6">
       <Breadcrumb :model="breadcrumbs" :home="home" class="!border-none !bg-transparent !p-0">
         <template #homeicon>
-          <vue-feather
-            type="home"
-            size="16"
-            class="text-surface-500 hover:text-primary transition-colors"
-          />
+          <div
+            class="flex cursor-pointer items-center text-[var(--p-surface-400)] transition-colors hover:text-[var(--p-primary-500)]"
+          >
+            <vue-feather type="home" size="16" />
+          </div>
         </template>
+
         <template #separator>
-          <vue-feather type="chevron-right" size="14" class="text-surface-300" />
+          <div class="mx-1 flex items-center text-[var(--p-surface-300)]">
+            <vue-feather type="chevron-right" size="14" />
+          </div>
         </template>
+
         <template #item="{ item }">
           <span
             :class="[
-              'text-sm font-medium transition-colors',
+              'text-sm leading-none font-medium transition-colors',
               item.url
-                ? 'text-surface-500 hover:text-primary cursor-pointer'
-                : 'text-surface-900 dark:text-surface-0',
+                ? 'cursor-pointer text-[var(--p-surface-500)] hover:text-[var(--p-primary-500)]'
+                : 'text-[var(--p-surface-900)]',
             ]"
           >
             {{ item.label }}
@@ -65,25 +73,30 @@ const removeFromFavorites = (productId) => {
       </Breadcrumb>
     </nav>
 
-    <div
-      class="border-surface-100 dark:border-surface-800 mb-8 flex items-end justify-between border-b pb-4"
-    >
+    <header class="mb-8 flex items-end justify-between border-b border-[var(--p-surface-100)] pb-6">
       <div>
-        <h1 class="text-3xl font-black tracking-tight uppercase lg:text-4xl">Избранное</h1>
-        <p v-if="favorites.length" class="text-surface-500 mt-2 text-sm font-medium">
+        <h1
+          class="text-3xl font-black tracking-tight text-[var(--p-surface-900)] uppercase lg:text-4xl"
+        >
+          Избранное
+        </h1>
+        <p
+          v-if="favorites.length"
+          class="mt-2 text-sm font-medium text-[var(--p-text-muted-color)]"
+        >
           У вас {{ favorites.length }} сохраненных товаров
         </p>
       </div>
 
       <button
         v-if="favorites.length"
-        class="text-surface-400 flex items-center gap-2 text-xs font-bold tracking-widest uppercase transition-colors hover:text-red-500"
-        @click="favorites = []"
+        class="flex items-center gap-2 text-xs font-bold tracking-widest text-[var(--p-red-500)] uppercase transition-all hover:opacity-70 active:scale-95"
+        @click="clearAll"
       >
         <vue-feather type="trash-2" size="14" />
         Очистить список
       </button>
-    </div>
+    </header>
 
     <div v-if="favorites.length">
       <ProductList :products="favorites" @toggle-favorite="removeFromFavorites" />
@@ -91,17 +104,18 @@ const removeFromFavorites = (productId) => {
 
     <div v-else class="flex min-h-[400px] flex-col items-center justify-center text-center">
       <div
-        class="bg-surface-100 dark:bg-surface-800 text-surface-400 mb-6 flex h-20 w-20 items-center justify-center rounded-full"
+        class="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[var(--p-surface-100)] text-[var(--p-surface-400)]"
       >
         <vue-feather type="heart" size="40" stroke-width="1.5" />
       </div>
-      <h2 class="mb-2 text-xl font-bold">В избранном пока пусто</h2>
-      <p class="text-surface-500 mb-8 max-w-xs font-medium">
+      <h2 class="mb-2 text-xl font-bold text-[var(--p-surface-900)]">В избранном пока пусто</h2>
+      <p class="mb-8 max-w-xs font-medium text-[var(--p-text-muted-color)]">
         Добавляйте товары в список желаний, чтобы вернуться к ним позже.
       </p>
+
       <a
         href="/"
-        class="bg-brand-blue hover:bg-brand-blue/90 shadow-brand-blue/20 rounded-xl px-8 py-3 font-bold text-white no-underline shadow-lg transition-all active:scale-95"
+        class="rounded-[var(--p-border-radius-xl)] bg-[var(--p-primary-500)] px-8 py-3 font-bold text-white no-underline shadow-[var(--p-primary-500)]/20 shadow-lg transition-all hover:bg-[var(--p-primary-600)] active:scale-95"
       >
         Перейти в каталог
       </a>
