@@ -1,8 +1,13 @@
 <script setup>
 import { ref } from 'vue';
-import Breadcrumb from 'primevue/breadcrumb';
 import VueFeather from 'vue-feather';
 import ProductList from '@/widgets/product-list/ui/ProductList.vue';
+
+import Breadcrumb from '@/shared/ui/breadcrumb';
+
+const breadcrumbs = [
+  { label: 'Избранное' }, // Последний без 'to'
+];
 
 const favorites = ref([
   {
@@ -28,9 +33,6 @@ const favorites = ref([
   },
 ]);
 
-const home = ref({ url: '/' });
-const breadcrumbs = ref([{ label: 'Избранное' }]);
-
 const removeFromFavorites = (id) => {
   favorites.value = favorites.value.filter((item) => item.id !== id);
 };
@@ -41,37 +43,8 @@ const clearAll = () => {
 </script>
 
 <template>
-  <main class="mx-auto w-full flex-1 px-4 py-6" style="max-width: var(--spacing-container-max)">
-    <nav class="mb-6">
-      <Breadcrumb :model="breadcrumbs" :home="home" class="!border-none !bg-transparent !p-0">
-        <template #homeicon>
-          <div
-            class="flex cursor-pointer items-center text-[var(--p-surface-400)] transition-colors hover:text-[var(--p-primary-500)]"
-          >
-            <vue-feather type="home" size="16" />
-          </div>
-        </template>
-
-        <template #separator>
-          <div class="mx-1 flex items-center text-[var(--p-surface-300)]">
-            <vue-feather type="chevron-right" size="14" />
-          </div>
-        </template>
-
-        <template #item="{ item }">
-          <span
-            :class="[
-              'text-sm leading-none font-medium transition-colors',
-              item.url
-                ? 'cursor-pointer text-[var(--p-surface-500)] hover:text-[var(--p-primary-500)]'
-                : 'text-[var(--p-surface-900)]',
-            ]"
-          >
-            {{ item.label }}
-          </span>
-        </template>
-      </Breadcrumb>
-    </nav>
+  <main class="mx-auto w-full max-w-container-max flex-1 px-4 py-6">
+    <Breadcrumb :items="breadcrumbs" class="mb-8" />
 
     <header class="mb-8 flex items-end justify-between border-b border-[var(--p-surface-100)] pb-6">
       <div>

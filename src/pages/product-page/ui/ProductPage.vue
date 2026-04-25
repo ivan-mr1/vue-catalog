@@ -1,7 +1,11 @@
 <script setup>
+import Breadcrumb from '@/shared/ui/breadcrumb';
+
+const breadcrumbs = [
+  { label: '/product/:id' }, // Последний без 'to'
+];
 </script>
 
 <template>
-  <div class="page">card
-  </div>
+  <Breadcrumb :items="breadcrumbs" />
 </template>

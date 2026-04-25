@@ -9,7 +9,6 @@ const props = defineProps({
   },
 });
 
-// является ли элемент последним (активным)
 const isLast = (index) => index === props.items.length - 1;
 </script>
 
