@@ -13,7 +13,7 @@
         <circle cx="75" cy="30" r="6" fill="currentColor" class="animate-pulse" />
       </svg>
 
-      <div class="flex flex-col leading-tight">
+      <div class="flex flex-col leading-tight max-[479px]:hidden">
         <span class="text-3xl font-black tracking-tighter uppercase">OptiVue</span>
       </div>
     </div>

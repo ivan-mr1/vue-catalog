@@ -1,4 +1,9 @@
 {
+  "callButton": "Заказать звонок",
+  "catalog": "Каталог",
+  "menuOpen": "Открыть меню",
+  "menuClose": "Закрыть меню",
+  "mobileMenu": "Мобильное меню",
   "nav": {
     "salons": "Салоны",
     "promotions": "Акции",

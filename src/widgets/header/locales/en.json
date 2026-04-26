@@ -1,4 +1,9 @@
 {
+  "callButton": "Request a call",
+  "catalog": "Catalog",
+  "menuOpen": "Open menu",
+  "menuClose": "Close menu",
+  "mobileMenu": "Mobile menu",
   "nav": {
     "salons": "Salons",
     "promotions": "Promotions",

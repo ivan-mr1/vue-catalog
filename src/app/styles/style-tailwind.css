@@ -3,6 +3,7 @@
 @theme {
   --spacing-container-max: calc(1200px + (16px * 2));
   --breakpoint-desktop: 1232px;
+  --breakpoint-xs: 400px;
 }
 
 @layer base {
