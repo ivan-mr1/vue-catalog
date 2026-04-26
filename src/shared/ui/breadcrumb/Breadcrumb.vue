@@ -13,42 +13,35 @@ const isLast = (index) => index === props.items.length - 1;
 </script>
 
 <template>
-  <nav aria-label="Breadcrumb" class="flex">
-    <ol class="m-0 flex list-none items-center gap-2 p-0">
+  <nav aria-label="Breadcrumb" class="flex items-center">
+    <ol class="m-0 flex items-center p-0">
       <li class="flex items-center">
         <RouterLink
           to="/"
-          class="flex items-center text-[var(--p-surface-400)] transition-colors hover:text-[var(--p-primary-500)]"
+          class="group -ml-1 flex items-center rounded-md p-1"
+          aria-label="Главная"
         >
           <vue-feather type="home" size="16" />
         </RouterLink>
       </li>
 
-      <li v-if="items.length > 0" class="flex items-center text-[var(--p-surface-300)]">
-        <vue-feather type="chevron-right" size="14" />
-      </li>
-
       <template v-for="(item, index) in items" :key="index">
+        <li class="mx-1.5 flex items-center" aria-hidden="true">
+          <vue-feather type="chevron-right" size="14" />
+        </li>
+
         <li class="flex items-center">
-          <RouterLink
-            v-if="!isLast(index) && item.to"
-            :to="item.to"
-            class="text-sm font-medium text-[var(--p-surface-500)] no-underline transition-colors hover:text-[var(--p-primary-500)]"
-          >
+          <RouterLink v-if="!isLast(index) && item.to" :to="item.to" class="text-sm font-medium">
             {{ item.label }}
           </RouterLink>
 
           <span
             v-else
-            class="cursor-default text-sm font-semibold text-[var(--p-surface-900)]"
+            class="cursor-default text-sm leading-none font-semibold"
             aria-current="page"
           >
             {{ item.label }}
           </span>
-        </li>
-
-        <li v-if="!isLast(index)" class="flex items-center text-[var(--p-surface-300)]">
-          <vue-feather type="chevron-right" size="14" />
         </li>
       </template>
     </ol>

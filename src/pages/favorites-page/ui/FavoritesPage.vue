@@ -48,22 +48,15 @@ const clearAll = () => {
 
     <header class="mb-8 flex items-end justify-between border-b border-[var(--p-surface-100)] pb-6">
       <div>
-        <h1
-          class="text-3xl font-black tracking-tight text-[var(--p-surface-900)] uppercase lg:text-4xl"
-        >
-          Избранное
-        </h1>
-        <p
-          v-if="favorites.length"
-          class="mt-2 text-sm font-medium text-[var(--p-text-muted-color)]"
-        >
+        <h1 class="text-3xl font-black tracking-tight uppercase lg:text-4xl">Избранное</h1>
+        <p v-if="favorites.length" class="mt-2 text-sm font-medium">
           У вас {{ favorites.length }} сохраненных товаров
         </p>
       </div>
 
       <button
         v-if="favorites.length"
-        class="flex items-center gap-2 text-xs font-bold tracking-widest text-[var(--p-red-500)] uppercase transition-all hover:opacity-70 active:scale-95"
+        class="flex items-center gap-2 text-xs font-bold tracking-widest uppercase transition-all hover:opacity-70 active:scale-95"
         @click="clearAll"
       >
         <vue-feather type="trash-2" size="14" />
@@ -81,17 +74,15 @@ const clearAll = () => {
       >
         <vue-feather type="heart" size="40" stroke-width="1.5" />
       </div>
-      <h2 class="mb-2 text-xl font-bold text-[var(--p-surface-900)]">В избранном пока пусто</h2>
-      <p class="mb-8 max-w-xs font-medium text-[var(--p-text-muted-color)]">
+      <h2 class="mb-2 text-xl font-bold">В избранном пока пусто</h2>
+      <p class="mb-8 max-w-xs font-medium">
         Добавляйте товары в список желаний, чтобы вернуться к ним позже.
       </p>
-
-      <a
-        href="/"
+      <RouterLink
+        to="/"
         class="rounded-[var(--p-border-radius-xl)] bg-[var(--p-primary-500)] px-8 py-3 font-bold text-white no-underline shadow-[var(--p-primary-500)]/20 shadow-lg transition-all hover:bg-[var(--p-primary-600)] active:scale-95"
+        >Перейти в каталог</RouterLink
       >
-        Перейти в каталог
-      </a>
     </div>
   </main>
 </template>
