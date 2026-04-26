@@ -5,18 +5,25 @@
 
       <div class="divider"></div>
 
-      <h2 class="error-title">Упс! Страница затерялась.</h2>
+      <h2 class="error-title">{{ t('errorTitle') }}</h2>
       <p class="error-message">
-        Похоже, адрес, который вы ввели, больше не существует, или его никогда не было. Не
-        волнуйтесь, мы поможем вам вернуться.
+        {{ t('errorMessage') }}
       </p>
 
-      <router-link :to="{ name: 'Home' }" class="home-button"> Вернуться на главную </router-link>
+      <router-link :to="{ name: 'Home' }" class="home-button"> {{ t('homeButton') }} </router-link>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useSliceI18n } from '@/shared/i18n';
+
+import ru from '../locales/ru.json';
+import ua from '../locales/ua.json';
+import en from '../locales/en.json';
+
+const { t } = useSliceI18n('notFoundPage', { ru, ua, en });
+</script>
 
 <style scoped>
 .not-found-container {

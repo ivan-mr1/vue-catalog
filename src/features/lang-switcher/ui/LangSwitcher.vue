@@ -4,6 +4,13 @@ import { useI18n } from 'vue-i18n';
 import { browserStorage } from '@/shared/lib';
 import Select from 'primevue/select';
 import VueFeather from 'vue-feather';
+import { useSliceI18n } from '@/shared/i18n';
+
+import ru from '../locales/ru.json';
+import ua from '../locales/ua.json';
+import en from '../locales/en.json';
+
+const { t } = useSliceI18n('langSwitcher', { ru, ua, en });
 
 const { locale } = useI18n();
 
@@ -32,7 +39,7 @@ watch(
       :options="langOptions"
       option-label="label"
       option-value="value"
-      aria-label="Язык"
+      :aria-label="t('ariaLabel')"
       class="!border-none !bg-transparent !shadow-none"
       :pt="{
         label: { class: 'font-bold tracking-wide uppercase' },

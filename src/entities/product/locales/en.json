@@ -1,6 +1,5 @@
 {
-  "noPoster": "No Poster",
-  "unknownTitle": "Unknown Title",
-  "release": "Release",
-  "noRating": "N/A"
+  "code": "Code",
+  "currency": "UAH",
+  "buy": "Buy"
 }

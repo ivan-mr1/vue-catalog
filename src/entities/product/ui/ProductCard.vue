@@ -1,6 +1,13 @@
 <script setup>
 import Button from 'primevue/button';
 import VueFeather from 'vue-feather';
+import { useSliceI18n } from '@/shared/i18n';
+
+import ru from '../locales/ru.json';
+import ua from '../locales/ua.json';
+import en from '../locales/en.json';
+
+const { t } = useSliceI18n('productCard', { ru, ua, en });
 
 defineProps({
   product: {
@@ -44,7 +51,7 @@ const emit = defineEmits(['add-to-cart', 'toggle-favorite']);
 
     <div class="flex flex-col gap-1">
       <span class="text-surface-400 text-[10px] font-bold tracking-wider uppercase">
-        Код: {{ product.code }}
+        {{ t('code') }}: {{ product.code }}
       </span>
 
       <h3 class="line-clamp-2 min-h-[2.5rem] text-sm leading-tight font-bold">
@@ -58,12 +65,14 @@ const emit = defineEmits(['add-to-cart', 'toggle-favorite']);
       </h3>
 
       <div class="mt-3 flex items-center justify-between">
-        <div class="text-brand-blue text-lg font-black">{{ product.price }} грн</div>
+        <div class="text-brand-blue text-lg font-black">
+          {{ product.price }} {{ t('currency') }}
+        </div>
 
         <Button
           @click="emit('add-to-cart', product)"
           class="!bg-brand-blue !rounded-xl !border-none !p-2.5 transition-transform active:scale-95"
-          aria-label="Купить"
+          :aria-label="t('buy')"
         >
           <template #icon>
             <vue-feather type="shopping-cart" size="18" stroke-width="3" class="text-white" />

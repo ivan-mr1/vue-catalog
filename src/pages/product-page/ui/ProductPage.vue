@@ -1,9 +1,18 @@
 <script setup>
+import { computed } from 'vue';
 import Breadcrumb from '@/shared/ui/breadcrumb';
 
-const breadcrumbs = [
-  { label: '/product/:id' }, // Последний без 'to'
-];
+import { useSliceI18n } from '@/shared/i18n';
+
+import ru from '../locales/ru.json';
+import ua from '../locales/ua.json';
+import en from '../locales/en.json';
+
+const { t } = useSliceI18n('productPage', { ru, ua, en });
+
+const breadcrumbs = computed(() => [
+  { label: t('breadcrumb') }, // Последний без 'to'
+]);
 </script>
 
 <template>

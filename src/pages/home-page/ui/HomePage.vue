@@ -2,6 +2,13 @@
 import { ref } from 'vue';
 import HeroSection from '@/widgets/hero';
 import ProductList from '@/widgets/product-list';
+import { useSliceI18n } from '@/shared/i18n';
+
+import ru from '../locales/ru.json';
+import ua from '../locales/ua.json';
+import en from '../locales/en.json';
+
+const { t } = useSliceI18n('homePage', { ru, ua, en });
 
 const products = ref([
   {
@@ -94,6 +101,6 @@ const products = ref([
 <template>
   <div>
     <HeroSection />
-    <ProductList title="Наши товары" :products="products" />
+    <ProductList :title="t('ourProducts')" :products="products" />
   </div>
 </template>

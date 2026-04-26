@@ -1,6 +1,5 @@
 {
-  "noPoster": "Без постера",
-  "unknownTitle": "Невідома назва",
-  "release": "Реліз",
-  "noRating": "Н/Д"
+  "code": "Код",
+  "currency": "грн",
+  "buy": "Купити"
 }

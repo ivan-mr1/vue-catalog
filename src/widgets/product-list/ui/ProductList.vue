@@ -1,5 +1,12 @@
 <script setup>
 import ProductCard from '@/entities/product';
+import { useSliceI18n } from '@/shared/i18n';
+
+import ru from '../locales/ru.json';
+import ua from '../locales/ua.json';
+import en from '../locales/en.json';
+
+const { t } = useSliceI18n('productList', { ru, ua, en });
 
 defineProps({
   products: {
@@ -40,7 +47,7 @@ const emit = defineEmits(['add-to-cart', 'toggle-favorite']);
       v-if="products.length === 0"
       class="border-surface-200 dark:border-surface-800 flex h-60 flex-col items-center justify-center rounded-2xl border-2 border-dashed"
     >
-      <span class="text-surface-400 font-medium">Товары не найдены</span>
+      <span class="text-surface-400 font-medium">{{ t('emptyState') }}</span>
     </div>
   </section>
 </template>

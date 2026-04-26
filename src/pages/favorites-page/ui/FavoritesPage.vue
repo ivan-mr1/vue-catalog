@@ -1,13 +1,21 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import VueFeather from 'vue-feather';
 import ProductList from '@/widgets/product-list/ui/ProductList.vue';
 
 import Breadcrumb from '@/shared/ui/breadcrumb';
 
-const breadcrumbs = [
-  { label: 'Избранное' }, // Последний без 'to'
-];
+import { useSliceI18n } from '@/shared/i18n';
+
+import ru from '../locales/ru.json';
+import ua from '../locales/ua.json';
+import en from '../locales/en.json';
+
+const { t } = useSliceI18n('favoritesPage', { ru, ua, en });
+
+const breadcrumbs = computed(() => [
+  { label: t('breadcrumb') }, // Последний без 'to'
+]);
 
 const favorites = ref([
   {
@@ -48,9 +56,9 @@ const clearAll = () => {
 
     <header class="mb-8 flex items-end justify-between border-b border-[var(--p-surface-100)] pb-6">
       <div>
-        <h1 class="text-3xl font-black tracking-tight uppercase lg:text-4xl">Избранное</h1>
+        <h1 class="text-3xl font-black tracking-tight uppercase lg:text-4xl">{{ t('title') }}</h1>
         <p v-if="favorites.length" class="mt-2 text-sm font-medium">
-          У вас {{ favorites.length }} сохраненных товаров
+          {{ t('itemsCount', { count: favorites.length }) }}
         </p>
       </div>
 
@@ -60,7 +68,7 @@ const clearAll = () => {
         @click="clearAll"
       >
         <vue-feather type="trash-2" size="14" />
-        Очистить список
+        {{ t('clearList') }}
       </button>
     </header>
 
@@ -74,14 +82,14 @@ const clearAll = () => {
       >
         <vue-feather type="heart" size="40" stroke-width="1.5" />
       </div>
-      <h2 class="mb-2 text-xl font-bold">В избранном пока пусто</h2>
+      <h2 class="mb-2 text-xl font-bold">{{ t('emptyTitle') }}</h2>
       <p class="mb-8 max-w-xs font-medium">
-        Добавляйте товары в список желаний, чтобы вернуться к ним позже.
+        {{ t('emptyMessage') }}
       </p>
       <RouterLink
         to="/"
         class="rounded-[var(--p-border-radius-xl)] bg-[var(--p-primary-500)] px-8 py-3 font-bold text-white no-underline shadow-[var(--p-primary-500)]/20 shadow-lg transition-all hover:bg-[var(--p-primary-600)] active:scale-95"
-        >Перейти в каталог</RouterLink
+        >{{ t('goToCatalog') }}</RouterLink
       >
     </div>
   </main>

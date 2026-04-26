@@ -1,0 +1,9 @@
+{
+  "ariaLabel": "Select city",
+  "cities": {
+    "Kyiv": "Kyiv",
+    "Kharkiv": "Kharkiv",
+    "Odesa": "Odesa",
+    "Dnipro": "Dnipro"
+  }
+}

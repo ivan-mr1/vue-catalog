@@ -1,0 +1,9 @@
+{
+  "breadcrumb": "Favorites",
+  "title": "Favorites",
+  "itemsCount": "You have {count} saved products",
+  "clearList": "Clear list",
+  "emptyTitle": "Your favorites list is empty",
+  "emptyMessage": "Add products to your wishlist to return to them later.",
+  "goToCatalog": "Go to catalog"
+}

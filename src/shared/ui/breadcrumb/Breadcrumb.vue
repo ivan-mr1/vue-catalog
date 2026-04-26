@@ -1,5 +1,12 @@
 <script setup>
 import VueFeather from 'vue-feather';
+import { useSliceI18n } from '@/shared/i18n';
+
+import ru from './locales/ru.json';
+import ua from './locales/ua.json';
+import en from './locales/en.json';
+
+const { t } = useSliceI18n('breadcrumb', { ru, ua, en });
 
 const props = defineProps({
   items: {
@@ -19,7 +26,7 @@ const isLast = (index) => index === props.items.length - 1;
         <RouterLink
           to="/"
           class="group -ml-1 flex items-center rounded-md p-1"
-          aria-label="Главная"
+          :aria-label="t('home')"
         >
           <vue-feather type="home" size="16" />
         </RouterLink>
