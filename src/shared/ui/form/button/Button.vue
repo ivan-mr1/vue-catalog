@@ -43,7 +43,6 @@ const isLink = computed(() => !!props.href);
   background-color: transparent;
   border: 1px solid var(--color-white);
   border-radius: var(--border-radius);
-  text-decoration: none;
 
   &:active:not(.is-disabled) {
     scale: 0.95;

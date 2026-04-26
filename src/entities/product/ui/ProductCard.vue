@@ -28,7 +28,7 @@ const emit = defineEmits(['add-to-cart', 'toggle-favorite']);
 
 <template>
   <article
-    class="group bg-surface-0 dark:bg-surface-900 border-surface-200 dark:border-surface-800 hover:border-primary/30 rounded-2xl border p-3 transition-all duration-300 hover:shadow-lg"
+    class="group bg-surface-0 dark:bg-surface-900 border-surface-200 dark:border-surface-800 rounded-2xl border p-3 transition-all duration-300 hover:border-[var(--p-primary-500)]/30 hover:shadow-lg"
   >
     <div
       class="bg-surface-100 dark:bg-surface-800 relative mb-4 aspect-4/3 overflow-hidden rounded-xl"
@@ -58,7 +58,7 @@ const emit = defineEmits(['add-to-cart', 'toggle-favorite']);
         <a
           :href="`/card.html?id=${product.id}`"
           target="_blank"
-          class="hover:text-primary text-current no-underline transition-colors"
+          class="transition-colors hover:text-[var(--p-primary-500)]"
         >
           {{ product.name }}
         </a>

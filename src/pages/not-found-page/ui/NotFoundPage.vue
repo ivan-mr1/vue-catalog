@@ -1,16 +1,30 @@
 <template>
-  <div class="not-found-container page">
-    <div class="content">
-      <h1 class="error-code">404</h1>
+  <div class="flex flex-1 flex-col items-center justify-center px-4 py-20">
+    <div
+      class="bg-surface-0 dark:bg-surface-900 border-surface-200 dark:border-surface-800 w-full max-w-lg rounded-2xl border p-8 text-center shadow-sm lg:p-12"
+    >
+      <h1
+        class="text-primary text-8xl font-extrabold tracking-tighter transition-transform duration-500 hover:scale-105 sm:text-9xl"
+      >
+        404
+      </h1>
 
-      <div class="divider"></div>
+      <div class="bg-surface-200 dark:bg-surface-700 mx-auto my-6 h-1 w-16 rounded-full" />
 
-      <h2 class="error-title">{{ t('errorTitle') }}</h2>
-      <p class="error-message">
+      <h2 class="mb-4 text-2xl font-bold lg:text-3xl">
+        {{ t('errorTitle') }}
+      </h2>
+
+      <p class="text-surface-600 dark:text-surface-400 mb-8 text-base leading-relaxed lg:text-lg">
         {{ t('errorMessage') }}
       </p>
 
-      <router-link :to="{ name: 'Home' }" class="home-button"> {{ t('homeButton') }} </router-link>
+      <router-link
+        :to="{ name: 'Home' }"
+        class="bg-primary hover:bg-primary-emphasis inline-block rounded-xl px-8 py-3.5 font-bold text-white transition-all active:scale-95"
+      >
+        {{ t('homeButton') }}
+      </router-link>
     </div>
   </div>
 </template>
@@ -26,86 +40,5 @@ const { t } = useSliceI18n('notFoundPage', { ru, ua, en });
 </script>
 
 <style scoped>
-.not-found-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 80px);
-  background-color: #f9fafb;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 20px;
-}
-
-.content {
-  text-align: center;
-  max-width: 500px;
-  padding: 40px;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-}
-
-.error-code {
-  font-size: 120px;
-  font-weight: 800;
-  margin: 0;
-  color: #4f46e5;
-  line-height: 1;
-  letter-spacing: -5px;
-}
-
-.divider {
-  height: 4px;
-  width: 60px;
-  background-color: #e5e7eb;
-  margin: 20px auto;
-  border-radius: 2px;
-}
-
-.error-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #1f2937;
-  margin: 0 0 15px 0;
-}
-
-.error-message {
-  font-size: 16px;
-  color: #6b7280;
-  line-height: 1.6;
-  margin-bottom: 30px;
-}
-
-.home-button {
-  display: inline-block;
-  padding: 12px 30px;
-  background-color: #4f46e5;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  transition:
-    background-color 0.2s ease,
-    transform 0.1s ease;
-}
-
-.home-button:hover {
-  background-color: #4338ca;
-}
-
-.home-button:active {
-  transform: translateY(1px);
-}
-
-@media (max-width: 640px) {
-  .error-code {
-    font-size: 80px;
-  }
-  .error-title {
-    font-size: 22px;
-  }
-  .content {
-    padding: 30px 20px;
-  }
-}
+/* No extra CSS needed - all handled by Tailwind and PrimeVue theme */
 </style>

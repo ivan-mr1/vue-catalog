@@ -49,7 +49,7 @@ const menuSections = computed(() => [
 const socialIcons = ['facebook', 'instagram', 'twitter', 'github'];
 
 const navLinkClass =
-  'text-surface-500 hover:text-primary focus-visible:ring-primary block w-fit rounded-sm text-base no-underline transition-colors outline-none focus-visible:ring-2 focus-visible:ring-offset-4';
+  'text-surface-500 hover:text-primary focus-visible:ring-primary block w-fit rounded-sm text-base transition-colors outline-none focus-visible:ring-2 focus-visible:ring-offset-4';
 const socialLinkClass =
   'text-surface-500 hover:text-primary focus-visible:ring-primary rounded-full p-1 transition-all outline-none hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-offset-4';
 </script>
