@@ -46,7 +46,7 @@ watch(
       }"
     >
       <template #value="{ value }">
-        <span class="hover:text-primary text-current transition-colors">
+        <span class="transition-colors hover:text-[var(--p-primary-500)]">
           {{ value }}
         </span>
       </template>

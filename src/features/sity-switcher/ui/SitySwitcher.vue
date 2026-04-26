@@ -31,11 +31,14 @@ const cities = computed(() => [
       :aria-label="t('ariaLabel')"
       class="!border-none !bg-transparent !shadow-none"
       :pt="{
-        label: { class: 'font-medium tracking-wide text-current !p-0' },
+        label: { class: 'font-medium tracking-wide !p-0' },
       }"
     >
       <template #value="{ value }">
-        <span v-if="value" class="hover:text-primary cursor-pointer text-current transition-colors">
+        <span
+          v-if="value"
+          class="cursor-pointer transition-colors hover:text-[var(--p-primary-500)]"
+        >
           {{ t(`cities.${value}`) }}
         </span>
       </template>

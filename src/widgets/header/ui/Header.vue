@@ -27,7 +27,7 @@ const closeMenu = () => (mobileMenuOpen.value = false);
 
 <template>
   <header class="flex flex-col">
-    <div class="hidden border-b border-[var(--color-border)] py-2 md:block">
+    <div class="border-surface-100 dark:border-surface-800 hidden border-b py-2 md:block">
       <div class="flex items-center justify-between gap-4">
         <div class="flex items-center gap-3">
           <SitySwitcher />

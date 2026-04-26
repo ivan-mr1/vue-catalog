@@ -55,18 +55,10 @@ const navLinks = computed(() => [
 
 .menu-link--desktop {
   font-size: 0.875rem;
-  text-decoration: none;
-  color: var(--p-surface-500);
   transition: color 0.2s ease;
 }
 .menu-link--desktop:hover {
   color: var(--p-primary-500);
-}
-.dark .menu-link--desktop {
-  color: var(--p-surface-400);
-}
-.dark .menu-link--desktop:hover {
-  color: var(--p-primary-400);
 }
 
 /* ─── Mobile nav (drawer) ──────────────────── */
@@ -82,8 +74,6 @@ const navLinks = computed(() => [
   border-radius: 0.5rem;
   font-size: 0.9375rem;
   font-weight: 500;
-  text-decoration: none;
-  color: var(--p-surface-700);
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
@@ -92,11 +82,7 @@ const navLinks = computed(() => [
   background-color: var(--p-surface-100);
   color: var(--p-primary-500);
 }
-.dark .menu-link--mobile {
-  color: var(--p-surface-300);
-}
 .dark .menu-link--mobile:hover {
   background-color: var(--p-surface-800);
-  color: var(--p-primary-400);
 }
 </style>

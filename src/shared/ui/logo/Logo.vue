@@ -1,5 +1,5 @@
 <template>
-  <RouterLink to="/" class="group inline-block no-underline">
+  <RouterLink to="/" class="group inline-block">
     <div class="flex items-center gap-4">
       <svg
         viewBox="0 0 100 60"
