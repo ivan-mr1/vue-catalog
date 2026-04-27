@@ -1,5 +1,7 @@
 <script setup>
 import ProductCard from '@/entities/product';
+import { AddToCart } from '@/features/add-to-cart';
+import { ToggleFavorite } from '@/features/toggle-favorite';
 import { useSliceI18n } from '@/shared/i18n';
 
 import ru from '../locales/ru.json';
@@ -34,12 +36,14 @@ const emit = defineEmits(['add-to-cart', 'toggle-favorite']);
 
     <ul class="grid list-none grid-cols-2 gap-4 p-0 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
       <li v-for="product in products" :key="product.id" class="flex">
-        <ProductCard
-          :product="product"
-          class="w-full"
-          @add-to-cart="emit('add-to-cart', $event)"
-          @toggle-favorite="emit('toggle-favorite', $event)"
-        />
+        <ProductCard :product="product" class="w-full">
+          <template #favorite>
+            <ToggleFavorite :product-id="product.id" @toggle="emit('toggle-favorite', $event)" />
+          </template>
+          <template #addToCart>
+            <AddToCart :product="product" @add="emit('add-to-cart', $event)" />
+          </template>
+        </ProductCard>
       </li>
     </ul>
 

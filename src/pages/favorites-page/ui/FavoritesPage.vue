@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import VueFeather from 'vue-feather';
-import ProductList from '@/widgets/product-list/ui/ProductList.vue';
+import ProductList from '@/widgets/product-list';
 
 import Breadcrumb from '@/shared/ui/breadcrumb';
 

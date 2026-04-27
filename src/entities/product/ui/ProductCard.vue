@@ -1,6 +1,4 @@
 <script setup>
-import Button from 'primevue/button';
-import VueFeather from 'vue-feather';
 import { useSliceI18n } from '@/shared/i18n';
 
 import ru from '../locales/ru.json';
@@ -22,8 +20,6 @@ defineProps({
     }),
   },
 });
-
-const emit = defineEmits(['add-to-cart', 'toggle-favorite']);
 </script>
 
 <template>
@@ -40,13 +36,7 @@ const emit = defineEmits(['add-to-cart', 'toggle-favorite']);
         loading="lazy"
       />
 
-      <button
-        type="button"
-        @click="emit('toggle-favorite', product.id)"
-        class="bg-surface-0/80 dark:bg-surface-900/80 text-surface-600 absolute top-2 right-2 flex h-9 w-9 items-center justify-center rounded-full shadow-sm backdrop-blur-md transition-colors hover:text-red-500"
-      >
-        <vue-feather type="heart" size="18" stroke-width="2.5" />
-      </button>
+      <slot name="favorite" />
     </div>
 
     <div class="flex flex-col gap-1">
@@ -69,15 +59,7 @@ const emit = defineEmits(['add-to-cart', 'toggle-favorite']);
           {{ product.price }} {{ t('currency') }}
         </div>
 
-        <Button
-          @click="emit('add-to-cart', product)"
-          class="!bg-brand-blue !rounded-xl !border-none !p-2.5 transition-transform active:scale-95"
-          :aria-label="t('buy')"
-        >
-          <template #icon>
-            <vue-feather type="shopping-cart" size="18" stroke-width="3" class="text-white" />
-          </template>
-        </Button>
+        <slot name="addToCart" />
       </div>
     </div>
   </article>
