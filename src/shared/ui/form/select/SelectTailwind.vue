@@ -133,21 +133,23 @@ onUnmounted(() => {
 });
 
 const buttonClasses = computed(() => [
-  'flex w-full items-center justify-between gap-2 transition-all duration-300 focus:outline-none',
+  'flex w-full items-center justify-between gap-2 transition-all duration-300 focus:outline-none text-[var(--p-surface-900)] [.dark_&]:text-[var(--p-surface-0)]',
   props.variant === 'default'
-    ? 'bg-surface-0 dark:bg-surface-900 border-surface-200 dark:border-surface-800 rounded-xl border px-4 h-11 md:h-10 focus:ring-2 focus:ring-[var(--p-primary-500)]'
+    ? 'bg-[var(--p-surface-0)] [.dark_&]:bg-[var(--p-surface-950)] border-[var(--p-surface-200)] [.dark_&]:border-[var(--p-surface-800)] rounded-xl border px-4 h-11 md:h-10 focus:ring-2 focus:ring-[var(--p-primary-500)]'
     : 'bg-transparent border-none px-2 py-2 md:px-1 md:py-1 h-auto',
   isOpen.value && props.variant === 'default'
-    ? 'border-[var(--p-primary-500)] ring-2 ring-[var(--p-primary-500)]/20'
+    ? 'border-[var(--p-primary-500)] ring-2 ring-[var(--p-primary-500)]'
     : '',
   isOpen.value && props.variant === 'minimal' ? 'text-[var(--p-primary-500)]' : '',
-  !isOpen.value && props.variant === 'default' ? 'hover:border-[var(--p-primary-500)]/50' : '',
-  props.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer',
+  !isOpen.value && props.variant === 'default' ? 'hover:border-[var(--p-primary-500)]' : '',
+  props.disabled ? 'cursor-not-allowed' : 'cursor-pointer',
 ]);
 
 const labelClasses = computed(() => [
   'truncate text-sm font-bold uppercase tracking-wide',
-  currentOption.value ? 'text-surface-900 dark:text-surface-0' : 'text-surface-400',
+  currentOption.value
+    ? 'text-[var(--p-surface-900)] [.dark_&]:text-[var(--p-surface-0)]'
+    : 'text-[var(--p-surface-400)]',
   props.variant === 'minimal' ? 'hover:text-[var(--p-primary-500)]' : '',
 ]);
 </script>
@@ -169,7 +171,7 @@ const labelClasses = computed(() => [
       <vue-feather
         type="chevron-down"
         size="14"
-        class="text-surface-400 transition-transform duration-300"
+        class="text-[var(--p-surface-400)] transition-transform duration-300"
         :class="{ 'rotate-180 text-[var(--p-primary-500)]': isOpen }"
       />
     </button>
@@ -186,7 +188,7 @@ const labelClasses = computed(() => [
         <ul
           v-if="isOpen"
           ref="dropdownRef"
-          class="bg-surface-0 dark:bg-surface-900 border-surface-100 dark:border-surface-800 shadow-surface-900/10 fixed z-[9999] max-h-60 overflow-auto rounded-xl border p-1.5 shadow-xl backdrop-blur-md focus:outline-none"
+          class="fixed z-[9999] max-h-60 overflow-auto rounded-xl border border-[var(--p-surface-100)] bg-[var(--p-surface-0)] p-1.5 shadow-[var(--p-surface-900)] shadow-xl backdrop-blur-md focus:outline-none [.dark_&]:border-[var(--p-surface-800)] [.dark_&]:bg-[var(--p-surface-950)]"
           :style="{
             ...dropdownStyle,
             transformOrigin: placement === 'top' ? 'bottom' : 'top',
@@ -201,7 +203,7 @@ const labelClasses = computed(() => [
             :class="[
               getOptionValue(option) === model
                 ? 'bg-[var(--p-primary-500)] font-bold text-white shadow-sm'
-                : 'text-surface-700 dark:text-surface-300 hover:bg-[var(--p-primary-500)]/10 hover:text-[var(--p-primary-600)] dark:hover:bg-[var(--p-primary-500)]/20 dark:hover:text-[var(--p-primary-400)]',
+                : 'text-[var(--p-surface-700)] hover:bg-[var(--p-primary-500)] hover:text-white [.dark_&]:text-[var(--p-surface-300)]',
             ]"
             @click="selectOption(option)"
           >
@@ -215,7 +217,10 @@ const labelClasses = computed(() => [
               stroke-width="3"
             />
           </li>
-          <li v-if="options.length === 0" class="text-surface-400 px-3 py-2 text-center text-xs">
+          <li
+            v-if="options.length === 0"
+            class="px-3 py-2 text-center text-xs text-[var(--p-surface-400)]"
+          >
             No options
           </li>
         </ul>
