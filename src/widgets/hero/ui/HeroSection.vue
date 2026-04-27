@@ -1,5 +1,5 @@
 <script setup>
-import Button from 'primevue/button';
+import { ButtonTailwind } from '@/shared/ui/form/button';
 import VueFeather from 'vue-feather';
 import { useSliceI18n } from '@/shared/i18n';
 
@@ -31,17 +31,13 @@ const heroImg =
           </p>
 
           <div class="flex flex-wrap justify-center gap-4 lg:justify-start">
-            <Button :label="t('actions.catalog')" class="rounded-full! px-10! py-4! font-bold!" />
-            <Button
-              :label="t('actions.onlineFitting')"
-              variant="outlined"
-              severity="secondary"
-              class="rounded-full! px-10! py-4! font-bold!"
-            >
-              <template #icon>
-                <vue-feather type="camera" size="20" class="mr-2" />
-              </template>
-            </Button>
+            <ButtonTailwind size="lg" class="rounded-full px-10">
+              {{ t('actions.catalog') }}
+            </ButtonTailwind>
+            <ButtonTailwind variant="outline" size="lg" class="rounded-full px-10">
+              <vue-feather type="camera" size="20" />
+              {{ t('actions.onlineFitting') }}
+            </ButtonTailwind>
           </div>
         </div>
 

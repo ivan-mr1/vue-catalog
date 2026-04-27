@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useSliceI18n } from '@/shared/i18n';
 import InputText from 'primevue/inputtext';
-import Button from 'primevue/button';
+import { ButtonTailwind } from '@/shared/ui/form/button';
 import Divider from 'primevue/divider';
 import VueFeather from 'vue-feather';
 import LangSwitcher from '@/features/lang-switcher';
@@ -79,11 +79,9 @@ const socialLinkClass =
               class="w-full !rounded-r-none"
               aria-required="true"
             />
-            <Button
-              type="submit"
-              :label="t('newsletter.button')"
-              class="!rounded-l-none font-bold"
-            />
+            <ButtonTailwind type="submit" class="!rounded-l-none">
+              {{ t('newsletter.button') }}
+            </ButtonTailwind>
           </form>
         </div>
       </div>

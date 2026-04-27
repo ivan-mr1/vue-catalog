@@ -1,5 +1,5 @@
 <script setup>
-import Button from 'primevue/button';
+import { ButtonTailwind } from '@/shared/ui/form/button';
 import VueFeather from 'vue-feather';
 import SitySwitcher from '@/features/sity-switcher';
 import LangSwitcher from '@/features/lang-switcher';
@@ -58,22 +58,13 @@ const emit = defineEmits(['close']);
           <HeaderPhone class="hdr-link-phone text-xl" />
 
           <div class="flex flex-col gap-2">
-            <Button
-              :label="t('callButton')"
-              severity="secondary"
-              variant="outlined"
-              class="w-full justify-center !font-bold"
-            />
-            <Button
-              :label="t('catalog')"
-              severity="secondary"
-              variant="outlined"
-              class="w-full justify-center !font-bold"
-            >
-              <template #icon>
-                <vue-feather type="menu" size="18" class="mr-2" />
-              </template>
-            </Button>
+            <ButtonTailwind variant="outline" block>
+              {{ t('callButton') }}
+            </ButtonTailwind>
+            <ButtonTailwind variant="outline" block>
+              <vue-feather type="menu" size="18" />
+              {{ t('catalog') }}
+            </ButtonTailwind>
           </div>
 
           <div class="hdr-divider" />

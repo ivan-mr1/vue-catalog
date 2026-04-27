@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import Button from 'primevue/button';
+import { ButtonTailwind } from '@/shared/ui/form/button';
 import VueFeather from 'vue-feather';
 import SitySwitcher from '@/features/sity-switcher';
 import LangSwitcher from '@/features/lang-switcher';
@@ -45,12 +45,9 @@ const closeMenu = () => (mobileMenuOpen.value = false);
 
       <div class="hidden shrink-0 items-center gap-4 lg:flex xl:gap-8">
         <HeaderPhone class="text-lg xl:text-2xl" />
-        <Button
-          :label="t('callButton')"
-          severity="secondary"
-          variant="outlined"
-          class="!font-bold whitespace-nowrap"
-        />
+        <ButtonTailwind variant="outline" class="whitespace-nowrap">
+          {{ t('callButton') }}
+        </ButtonTailwind>
       </div>
 
       <div class="flex shrink-0 items-center gap-0.5 xs:gap-1 lg:hidden">
@@ -65,16 +62,10 @@ const closeMenu = () => (mobileMenuOpen.value = false);
     </div>
 
     <div class="flex items-center gap-2 pb-3 xs:gap-3 md:gap-4 md:pb-4">
-      <Button
-        :label="t('catalog')"
-        severity="secondary"
-        variant="outlined"
-        class="hidden shrink-0 !font-bold md:flex"
-      >
-        <template #icon>
-          <vue-feather type="menu" size="20" class="mr-2" />
-        </template>
-      </Button>
+      <ButtonTailwind variant="outline" class="hidden shrink-0 md:flex">
+        <vue-feather type="menu" size="20" />
+        {{ t('catalog') }}
+      </ButtonTailwind>
 
       <div class="min-w-0 flex-1">
         <SearchInput />
