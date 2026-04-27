@@ -2,7 +2,7 @@
 import { watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { browserStorage } from '@/shared/lib';
-import Select from 'primevue/select';
+import { SelectTailwind } from '@/shared/ui/form/select';
 import VueFeather from 'vue-feather';
 import { useSliceI18n } from '@/shared/i18n';
 
@@ -34,28 +34,20 @@ watch(
   <div class="flex items-center gap-2">
     <vue-feather type="globe" size="18" aria-hidden="true" />
 
-    <Select
+    <SelectTailwind
       v-model="locale"
       :options="langOptions"
+      variant="minimal"
       option-label="label"
       option-value="value"
+      hover
       :aria-label="t('ariaLabel')"
-      class="!border-none !bg-transparent !shadow-none"
-      :pt="{
-        label: { class: 'font-bold tracking-wide uppercase' },
-      }"
     >
       <template #value="{ value }">
         <span class="transition-colors hover:text-[var(--p-primary-500)]">
           {{ value }}
         </span>
       </template>
-
-      <template #option="{ option }">
-        <span :lang="option.value">
-          {{ option.label }}
-        </span>
-      </template>
-    </Select>
+    </SelectTailwind>
   </div>
 </template>

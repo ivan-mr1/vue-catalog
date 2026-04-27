@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
-import Select from 'primevue/select';
+import { SelectTailwind } from '@/shared/ui/form/select';
 import VueFeather from 'vue-feather';
 import { useSliceI18n } from '@/shared/i18n';
 
@@ -23,16 +23,14 @@ const cities = computed(() => [
   <div class="flex items-center gap-2">
     <vue-feather type="map-pin" size="18" aria-hidden="true" />
 
-    <Select
+    <SelectTailwind
       v-model="selectedCity"
       :options="cities"
+      variant="minimal"
       option-label="name"
       option-value="value"
+      hover
       :aria-label="t('ariaLabel')"
-      class="!border-none !bg-transparent !shadow-none"
-      :pt="{
-        label: { class: 'font-medium tracking-wide !p-0' },
-      }"
     >
       <template #value="{ value }">
         <span
@@ -42,12 +40,6 @@ const cities = computed(() => [
           {{ t(`cities.${value}`) }}
         </span>
       </template>
-
-      <template #option="{ option }">
-        <span class="text-base">
-          {{ option.name }}
-        </span>
-      </template>
-    </Select>
+    </SelectTailwind>
   </div>
 </template>
