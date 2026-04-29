@@ -7,7 +7,6 @@ import Aura from '@primeuix/themes/aura';
 import App from '@/app';
 import VueFeather from 'vue-feather';
 
-
 const pinia = createPinia();
 const app = createApp(App);
 

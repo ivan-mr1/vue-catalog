@@ -34,7 +34,7 @@ const emit = defineEmits(['add-to-cart', 'toggle-favorite']);
       <slot name="actions"></slot>
     </div>
 
-    <ul class="grid list-none grid-cols-2 gap-4 p-0 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+    <ul class="grid gap-4 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
       <li v-for="product in products" :key="product.id" class="flex">
         <ProductCard :product="product" class="w-full">
           <template #favorite>
