@@ -1,5 +1,8 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, useAttrs } from 'vue';
+import { RouterLink } from 'vue-router';
+
+defineOptions({ inheritAttrs: false });
 
 const props = defineProps({
   href: { type: String, default: null },
@@ -9,74 +12,94 @@ const props = defineProps({
   variant: {
     type: String,
     default: 'primary',
-    validator: (value) => ['primary', 'secondary', 'outline', 'ghost', 'danger'].includes(value),
+    validator: (v) => ['primary', 'secondary', 'outline', 'ghost', 'danger'].includes(v),
   },
   size: {
     type: String,
     default: 'md',
-    validator: (value) => ['sm', 'md', 'lg', 'xl'].includes(value),
+    validator: (v) => ['sm', 'md', 'lg', 'xl'].includes(v),
   },
   loading: { type: Boolean, default: false },
   block: { type: Boolean, default: false },
 });
 
-const isLink = computed(() => !!props.href);
-const isRouterLink = computed(() => !!props.to);
+const attrs = useAttrs();
+
+const isLink = !!props.href;
+const isRouterLink = !!props.to;
+const isDisabled = computed(() => props.disabled || props.loading);
+
+const tag = isLink ? 'a' : isRouterLink ? RouterLink : 'button';
+
+const componentProps = computed(() => {
+  const base = { ...attrs };
+
+  if (isLink) return { ...base, href: props.href };
+  if (isRouterLink) return { ...base, to: props.to };
+
+  return { ...base, type: props.type };
+});
 
 const baseClasses =
-  'inline-flex items-center justify-center font-bold tracking-tight transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95';
+  'relative inline-flex items-center justify-center font-bold tracking-tight transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-95 overflow-hidden';
 
 const variantClasses = {
   primary:
-    'bg-[var(--p-primary-500)] text-white hover:bg-[var(--p-primary-600)] shadow-lg shadow-[var(--p-primary-500)]/25 dark:shadow-[var(--p-primary-500)]/40 focus:ring-[var(--p-primary-500)]',
+    'bg-[var(--p-primary-500)] text-white hover:bg-[var(--p-primary-600)] shadow-lg shadow-[var(--p-primary-500)]/25 focus-visible:ring-[var(--p-primary-500)]',
   secondary:
-    'bg-surface-100 text-surface-900 hover:bg-surface-200 focus:ring-surface-500 dark:bg-surface-800 dark:text-surface-0 dark:hover:bg-surface-700',
+    'bg-[var(--p-surface-100)] text-[var(--p-surface-900)] hover:bg-[var(--p-surface-200)] dark:bg-[var(--p-surface-800)] dark:text-[var(--p-surface-0)] dark:hover:bg-[var(--p-surface-700)]',
   outline:
-    'border-2 border-[var(--p-primary-500)] text-[var(--p-primary-500)] hover:bg-[var(--p-primary-50)] focus:ring-[var(--p-primary-500)] dark:hover:bg-[var(--p-primary-900)]/10',
+    'border-2 border-[var(--p-primary-500)] text-[var(--p-primary-500)] hover:bg-[var(--p-primary-50)] dark:hover:bg-[var(--p-primary-900)]/10 focus-visible:ring-[var(--p-primary-500)]',
   ghost:
-    'text-surface-600 hover:bg-surface-100 hover:text-surface-900 focus:ring-surface-500 dark:text-surface-400 dark:hover:bg-surface-800 dark:hover:text-surface-0',
+    'text-[var(--p-surface-600)] hover:bg-[var(--p-surface-100)] hover:text-[var(--p-surface-900)] dark:text-[var(--p-surface-400)] dark:hover:bg-[var(--p-surface-800)] dark:hover:text-[var(--p-surface-0)]',
   danger:
-    'bg-red-500 text-white hover:bg-red-600 shadow-lg shadow-red-500/20 dark:shadow-red-500/40 focus:ring-red-500',
+    'bg-[var(--p-red-500)] text-white hover:bg-[var(--p-red-600)] shadow-lg shadow-red-500/20 focus-visible:ring-red-500',
 };
 
 const sizeClasses = {
-  sm: 'px-3 py-1.5 text-xs rounded-lg gap-1.5',
-  md: 'px-5 py-2.5 text-sm rounded-xl gap-2',
-  lg: 'px-7 py-3.5 text-base rounded-2xl gap-2.5',
-  xl: 'px-9 py-4 text-lg rounded-[1.5rem] gap-3',
+  sm: 'px-3 py-1.5 text-xs rounded-[var(--p-border-radius-sm)] gap-1.5',
+  md: 'px-5 py-2.5 text-sm rounded-[var(--p-border-radius-md)] gap-2',
+  lg: 'px-7 py-3.5 text-base rounded-[var(--p-border-radius-lg)] gap-2.5',
+  xl: 'px-9 py-4 text-lg rounded-[var(--p-border-radius-xl)] gap-3',
 };
 
 const classes = computed(() => [
   baseClasses,
   variantClasses[props.variant],
   sizeClasses[props.size],
-  props.block ? 'w-full' : '',
+  props.block && 'w-full',
+  isDisabled.value && 'opacity-50 pointer-events-none cursor-not-allowed',
 ]);
-
-const tag = computed(() => {
-  if (isLink.value) return 'a';
-  if (isRouterLink.value) return 'RouterLink';
-  return 'button';
-});
 </script>
 
 <template>
   <component
     :is="tag"
+    v-bind="componentProps"
     :class="classes"
-    :href="isLink ? href : null"
-    :to="isRouterLink ? to : null"
-    :type="tag === 'button' ? type : null"
-    :disabled="disabled || loading"
-    :aria-disabled="disabled || loading ? 'true' : null"
+    :disabled="tag === 'button' ? isDisabled : null"
+    :aria-disabled="isDisabled"
+    :aria-busy="loading"
+    :tabindex="isDisabled ? -1 : null"
   >
-    <div
-      v-if="loading"
-      class="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent"
-    />
+    <span
+      :class="[
+        'flex items-center justify-center transition-opacity duration-300',
+        { 'opacity-0': loading },
+      ]"
+    >
+      <slot name="iconLeft" />
+      <slot />
+      <slot name="iconRight" />
+    </span>
 
-    <slot name="iconLeft" />
-    <slot />
-    <slot name="iconRight" />
+    <span
+      v-if="loading"
+      class="pointer-events-none absolute inset-0 flex items-center justify-center"
+    >
+      <span
+        class="h-[1.2em] w-[1.2em] animate-spin rounded-full border-2 border-current border-t-transparent"
+      />
+    </span>
   </component>
 </template>

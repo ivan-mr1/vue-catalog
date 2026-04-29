@@ -11,7 +11,9 @@ const { t } = useSliceI18n('headerActions', { ru, ua, en });
 
 <template>
   <div class="flex items-center gap-1">
-    <HeaderIconButton icon="shopping-cart" :aria-label="t('cart')" />
+    <RouterLink to="/cart">
+      <HeaderIconButton icon="shopping-cart" :aria-label="t('cart')" />
+    </RouterLink>
 
     <RouterLink to="/favorites">
       <HeaderIconButton icon="heart" :aria-label="t('favorites')" />

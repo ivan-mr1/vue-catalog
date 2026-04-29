@@ -62,7 +62,7 @@ const closeMenu = () => (mobileMenuOpen.value = false);
     </div>
 
     <div class="flex items-center gap-2 pb-3 xs:gap-3 md:gap-4 md:pb-4">
-      <ButtonTailwind variant="outline" class="hidden shrink-0 md:flex">
+      <ButtonTailwind to="/products" variant="outline" class="hidden shrink-0 md:flex">
         <vue-feather type="menu" size="20" />
         {{ t('catalog') }}
       </ButtonTailwind>
